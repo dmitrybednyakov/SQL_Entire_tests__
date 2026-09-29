@@ -1,0 +1,5 @@
+SELECT DISTINCT book_title
+FROM book
+INNER JOIN author
+	ON author.author_id = book.author_id
+WHERE page_count >= 100 AND publication_year > 2010 AND birth_year < 1980;

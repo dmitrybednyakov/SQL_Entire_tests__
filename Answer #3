@@ -1,0 +1,24 @@
+SELECT genre_name, COUNT(*) AS cnt
+FROM genre
+INNER JOIN book
+	ON book.genre_id = genre.genre_id
+WHERE publication_year >= 2002
+GROUP BY genre_name
+ORDER BY cnt DESC
+LIMIT 1;
+
+--Можно ли выводить колонку “cnt”? 
+--Если нет, то решить можно через WITH:
+
+WITH table_1 AS (
+SELECT genre_name, COUNT(*) AS cnt
+FROM genre
+INNER JOIN book
+	ON book.genre_id = genre.genre_id
+WHERE publication_year >= 2002
+GROUP BY genre_name
+ORDER BY cnt DESC)
+
+SELECT genre_name
+FROM table_1
+LIMIT 1;

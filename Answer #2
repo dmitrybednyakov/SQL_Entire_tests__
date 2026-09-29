@@ -1,0 +1,5 @@
+SELECT DISTINCT author_name
+FROM author
+INNER JOIN book
+	ON author.author_id = book.author_id
+WHERE birth_city IN (“Prague”, “Salisbury”) AND language != “English”
